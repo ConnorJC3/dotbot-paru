@@ -9,11 +9,11 @@ class PkgStatus(Enum):
     BUILD_FAIL = 'Build failure'
     NOT_SURE = 'Could not determine'
 
-class Pacaur(dotbot.Plugin):
-    _directives = ['pacman', 'pacaur']
+class Yay(dotbot.Plugin):
+    _directives = ['pacman', 'yay']
 
     def __init__(self, context):
-        super(Pacaur, self).__init__(self)
+        super(Yay, self).__init__(self)
         self._context = context
         self._strings = {}
         self._strings[PkgStatus.UP_TO_DATE] = 'nothing to do'
@@ -27,9 +27,9 @@ class Pacaur(dotbot.Plugin):
 
     def handle(self, directive, data):
         if not self.can_handle(directive):
-            raise ValueError('Pacaur cannot handle directive %s' % directive)
-        if self._bootstrap_pacaur() != 0:
-            raise Exception('Pacaur could not be installed on your system')
+            raise ValueError('Yay cannot handle directive %s' % directive)
+        if self._bootstrap_yay() != 0:
+            raise Exception('Yay could not be installed on your system')
         return self._process_packages(directive, data)
 
     def _process_packages(self, directive, packages):
@@ -58,7 +58,7 @@ class Pacaur(dotbot.Plugin):
         # Make sure we are sudo so we don't have any problems
         subprocess.call('sudo --validate', shell=True)
 
-        cmd = 'LANG=en_US.UTF-8 pacaur --needed --noconfirm --noedit -S {}'.format(pkg)
+        cmd = 'LANG=en_US.UTF-8 yay --needed --noconfirm --noedit -S {}'.format(pkg)
 
         self._log.info('Installing {}'.format(pkg))
 
@@ -87,7 +87,7 @@ class Pacaur(dotbot.Plugin):
         self._log.warn('Could not determine what happened with package {}'.format(pkg))
         return PkgStatus.NOT_SURE
 
-    def _bootstrap_pacaur(self):
+    def _bootstrap_yay(self):
         dir_path = os.path.dirname(os.path.realpath(__file__))
-        cmd = '{}/bootstrap-pacaur'.format(dir_path)
+        cmd = '{}/bootstrap-yay'.format(dir_path)
         return subprocess.call(cmd, shell=True)
