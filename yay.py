@@ -19,7 +19,7 @@ class Yay(dotbot.Plugin):
         super(Yay, self).__init__(self)
         self._context = context
         self._strings = {}
-        self._strings[PkgStatus.UP_TO_DATE] = 'nothing to do'
+        self._strings[PkgStatus.UP_TO_DATE] = 'is up to date -- skipping'
         self._strings[PkgStatus.INSTALLED] = 'Total Installed Size'
         self._strings[PkgStatus.NOT_FOUND] = 'Could not find all required packages'
         self._strings[PkgStatus.BUILD_FAIL] = 'failed to build'
