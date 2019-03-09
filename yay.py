@@ -87,7 +87,7 @@ class Yay(dotbot.Plugin):
             if out.find(self._strings[status]) >= 0:
                 return status
 
-        self._log.warn('Could not determine what happened with package {}'.format(pkg))
+        self._log.warning('Could not determine what happened with package {}'.format(pkg))
         return PkgStatus.NOT_SURE
 
     def _bootstrap_yay(self):
