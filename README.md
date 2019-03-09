@@ -12,7 +12,7 @@ set up a new computer.
 Add it as a submodule of your dotfiles repository.
 
 ```bash
-git submodule add https://github.com/ajlende/dotbot-yay
+git submodule add https://github.com/alexwh/dotbot-yay
 ```
 
 ## Usage
