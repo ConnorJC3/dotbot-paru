@@ -1,17 +1,8 @@
-# Dotbot `yay` Plugin
-
-Plugin for [dotbot](https://github.com/anishathalye/dotbot) that adds a `yay`
-directive. It allows installation of packeges using `yay`, and by extension
-`pacman`, packages.
-
-This plugin will attempt to install `yay` if not already present. This should make it easier to
-set up a new computer.
-
 # Dotbot `paru` Plugin
 
 A [Dotbot](https://github.com/anishathalye/dotbot) plugin to install packages on Arch Linux via [`paru`](https://github.com/Morganamilo/paru)
 
-Based on [dotbot-yay](https://github.com/alexwh/dotbot-yay), which is based on [dotbot-pacaur](https://github.com/ajlende/dotbot-pacaur).
+Based on [dotbot-yay](https://github.com/alexwh/dotbot-yay), which is based on [dotbot-pacaur](https://github.com/ajlende/dotbot-pacaur). This plugin will attempt to install `paru` if it is not present.
 
 ## Installation
 
