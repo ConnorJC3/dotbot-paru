@@ -20,7 +20,7 @@ class Paru(dotbot.Plugin):
     cmd = 'paru --needed --noconfirm -Syu -- {}'.format(package_list)
 
     self._log.info('Installing {}'.format(package_list))
-    result = subprocess.run(cmd, stdout=subprocess.DEVNULL, shell=True)
+    result = subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
 
     if result.returncode == 0:
       self._log.info('All packages installed successfully')
@@ -31,4 +31,4 @@ class Paru(dotbot.Plugin):
   def _bootstrap(self):
     dir_path = os.path.dirname(os.path.realpath(__file__))
     cmd = '{}/bootstrap'.format(dir_path)
-    return subprocess.run(cmd, stdout=subprocess.DEVNULL, shell=True).returncode
+    return subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True).returncode
