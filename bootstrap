@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Check if paru is already installed
+if [[ -x "$(command -v paru)" ]]; then
+  exit 0
+fi
+echo "Paru not installed, installing..."
+
+BUILDROOT="$(mktemp -d)"
+
+# Install build dependencies
+sudo pacman --needed --noconfirm -Syu base-devel git
+
+git clone "https://aur.archlinux.org/paru.git" "$BUILDROOT"
+# Run in subshell so working directory is not impacted
+(cd "$BUILDROOT" && makepkg --noconfirm --syncdeps --install)
+
+rm -rf "$BUILDROOT"
+if [[ ! -x "$(command -v paru)" ]]; then
+  exit 1
+fi
