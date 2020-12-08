@@ -20,7 +20,7 @@ class Paru(dotbot.Plugin):
     package_list = ' '.join(packages)
     cmd = 'paru --needed --noconfirm -Syu -- {}'.format(package_list)
 
-    self._log.info('Installing {}'.format(package_list))
+    self._log.lowinfo('Installing {}'.format(package_list))
     result = subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
 
     if result.returncode == 0:
