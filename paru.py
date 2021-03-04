@@ -18,7 +18,7 @@ class Paru(dotbot.Plugin):
 
   def _install(self, packages):
     package_list = ' '.join(packages)
-    cmd = 'paru --needed --noconfirm -Syu -- {}'.format(package_list)
+    cmd = 'paru --needed --noconfirm --nonewsonupgrade -Syu -- {}'.format(package_list)
 
     self._log.lowinfo('Installing {}'.format(package_list))
     result = subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
